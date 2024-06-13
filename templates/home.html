@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body style="text-align: center;">
+    {% include 'navbar.html' %}
+
+    <h1>This is home page</h1>
+    
+    <form action="/index/" method="POST">
+        {% csrf_token %}
+        <input type="checkbox" name="check">
+        <button>Send</button>
+    </form>
+
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas laboriosam veniam nostrum eligendi nobis rem culpa maiores. A, ex. Officiis possimus deleniti quae error molestiae dolores alias exercitationem ea consequuntur!</p>
+    <button>Contact us</button>
+
+    {% if isActive %}
+    
+      <div>
+        <h1>This is dynamic values</h1>
+        <h2>Today date is {{date}}</h2>
+        <h2>Name is {{name}}</h2>
+        <hr>
+        <h1>Student Data</h1>
+        <h2>Student Name: {{student.student_name}}</h2>
+        <h2>Student College: {{student.student_college}}</h2>
+        <h2>Student City: {{student.student_city}}</h2>
+        <hr>
+        <h1>Favorite program</h1>
+        {% for p in list_of_program %}
+            <p>{{p}}</p>
+        {% endfor %}
+    
+    </div>
+      {% else %}
+      <h2>User is not active</h2>
+      {% endif %}
+
+</body>
+</html>
